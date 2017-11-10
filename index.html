@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP IP Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link rel="stylesheet" type="text/css" media="all" href="style.css"/>
+    </head>
+    
+    
+    <body>
+        <div id="post">
+            <div class="name">POST</div>
+            Source Ip: <pre class="ip"></pre>
+            Forwarded From: <pre class="spoof"></pre>
+            <button id="test-post">Get My IP</button>
+        </div>
+        <div id="get">
+            <div class="name">GET</div>
+            Source Ip: <pre class="ip"></pre>
+            Forwarded From: <pre class="spoof"></pre>
+            <button id="test-get">Get My IP</button>
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src="iptest.js"></script>        
+    </body>
+    
+    
+</html>
