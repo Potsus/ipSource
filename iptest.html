@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP IP Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .ip{
+                border:2px solid green;
+            }
+            .spoof{
+                border:2px solid red;
+            }
+            #get{
+                border:2px solid brown;
+            }
+            #post{
+                border:2px solid blue;
+            }
+            #get, #post{
+                float: left;
+                position: relative;
+                width: 300px;
+                margin-top: 40px;
+                margin-left: 40px;
+            }
+            .name{
+                position: absolute;
+                top: -30px;
+                left: 15px;
+                border: inherit;
+                background-color: white;
+                color: black;
+            }
+            div{
+                padding: 2px;
+                margin: 2px;
+            }
+        </style>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $(function(){
+                $('#test-get').click(function(e){
+                    $.post('https://develop.fastfig.com/api/getIp.php', function(data){
+                        data = $.parseJSON(data);
+                        $('#get .ip').html(data['ip']);
+                        $('#get .spoof').html(data['spoof']);
+                    });
+                });
+                
+                $('#test-post').click(function(e){
+                    $.get('https://develop.fastfig.com/api/getIp.php', function(data){
+                        data = $.parseJSON(data);
+                        $('#post .ip').html(data['ip']);
+                        $('#post .spoof').html(data['spoof']);
+                    });
+                });
+                
+            });
+        </script>
+    </head>
+    
+    
+    <body>
+        <div id="post">
+            <div class="name">POST</div>
+            Source Ip: <div class="ip"></div>
+            <br />
+            Forwarded From: <div class="spoof"></div>
+            <br />
+            <button id="test-post">Get My IP</button>
+        </div>
+        <div id="get">
+            <div class="name">GET</div>
+            Source Ip: <div class="ip"></div>
+            <br />
+            Forwarded From: <div class="spoof"></div>
+            <br />
+            <button id="test-get">Get My IP</button>
+        </div>        
+    </body>
+    
+    
+</html>
